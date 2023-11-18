@@ -78,12 +78,11 @@ async def start_command(client: Client, message: Message):
             try:
                 z = await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
                 await asyncio.sleep(0.5)
-                await asyncio.sleep(20)
-                print("Files will be deleted in 30 minutes to avoid copyright issues. Please forward and save them.")
-                await z.delete()
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 m = await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
+                await asyncio.sleep(20)
+                await z.delete()
             except:
                 pass
         return
